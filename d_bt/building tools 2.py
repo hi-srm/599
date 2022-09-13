@@ -9,6 +9,7 @@ Created on Tue Sep 13 10:23:34 2022
 import random
 import operator
 import matplotlib.pyplot
+import time 
 
 
 # define the function
@@ -37,6 +38,11 @@ def distance_between(a, b):
     return (((a[0] - b[0])**2) + ((a[1] - b[1])**2))**0.5
 
 
+start = time.process_time()
+random.seed(0)
+
+
+
 # define how many agents and an empty list
 num_of_agents = 10
 num_of_iterations = 100
@@ -45,6 +51,44 @@ agents = []
 # create the agents
 for i in range(num_of_agents):
     agents.append([random.randint(0,99),random.randint(0,99)])
+    
+
+    
+    
+maxd = 0
+mind = distance_between(agents[0],agents[1])
+for i in range(num_of_agents):
+    for j in range(num_of_agents):
+        # print (i, j)
+        d = distance_between(agents[i],agents[j])
+        if(d > maxd):
+            maxd = d
+        if (d < mind):
+            mind = d
+            
+print(maxd)
+print(mind)
+
+
+countmind = 0
+
+for i in range(0, num_of_agents):
+    for j in range(i+1, num_of_agents):
+        d = distance_between(agents[i], agents[j]))
+            if (d == mind):
+                countmind = countmind + 1
+                print(agents[i])
+
+
+maxd = 0
+for i in range(num_of_agents):
+    for j in range(i+1, num_of_agents):
+        # print (i, j)
+        d = distance_between(agents[i],agents[j])
+        if(d > maxd):
+            maxd = d
+            
+print(maxd)
 
 # move the agents
 for j in range(num_of_iterations):
@@ -76,3 +120,5 @@ distance = distance_between(agents[0], agents[1])
 # to test it works 
 # distance = distance_between([0,0],[3,4])
 print(distance)
+
+
