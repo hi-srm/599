@@ -4,6 +4,22 @@ import matplotlib.pyplot
 import agentframework
 
 def distance_between(a, b):
+    """
+    
+
+    Parameters
+    ----------
+    a : TYPE
+        DESCRIPTION.
+    b : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    TYPE
+        DESCRIPTION.
+
+    """
     return (((a.x - b.x)**2) + ((a.y - b.y)**2))**0.5
 
 num_of_agents = 10

@@ -72,7 +72,7 @@ for line in csv_reader:
     rowlist = []
     for value in line:
         # print (type(value)) - to test type that the value is, as it wasn't plotting
-        rowlist.append(int(value)) # change value from string to int
+        rowlist.append((int(value))) # change value from string to int
     # print(rowlist)
     environment.append(rowlist)
 f.close()
@@ -96,6 +96,13 @@ if plot:
     matplotlib.pyplot.imshow(environment)
     matplotlib.pyplot.show()
     
+
+# change values
+for row in range(nrows):
+    for col in range(ncols):
+        value = environment[row][col]
+        # value2 = value * value #  shortening code
+        environment[row][col] = value * value
     
 # to test the value at a given row and column
 row = nrows-1 # test the very last row
