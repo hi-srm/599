@@ -65,7 +65,7 @@ import matplotlib.pyplot
 
 import csv
 
-f = open("in.txt")
+f = open("bfi.txt")
 csv_reader = csv.reader(f)
 environment = []
 for line in csv_reader:
@@ -92,9 +92,11 @@ for i in range(1, nrows):
     if ncols != ncolsini:
         print("error line", i, ", wrong number of columns, expecting", ncols, "received", ncolsini)
         plot = False
-if plot: 
-    matplotlib.pyplot.imshow(environment)
-    matplotlib.pyplot.show()
+        
+        
+# if plot: 
+#     matplotlib.pyplot.imshow(environment)
+#     matplotlib.pyplot.show()
     
 
 # change values
@@ -149,14 +151,14 @@ print(environment[row][col]) # i checked in the file
 
 
 
-with open('in.txt') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
-    line_count = 0
-    for row in csv_reader:
-        if line_count == 0:
-            print(f'Column names are {", ".join(row)}')
-            line_count += 1
-        else:
-            print(f'\t{row[0]}{row[1]}{row[2]}.')
-            line_count += 1
-    print(f'Processed {line_count} lines.')]
+# with open('in.txt') as csv_file:
+#     csv_reader = csv.reader(csv_file, delimiter=',')
+#     line_count = 0
+#     for row in csv_reader:
+#         if line_count == 0:
+#             print(f'Column names are {", ".join(row)}')
+#             line_count += 1
+#         else:
+#             print(f'\t{row[0]}{row[1]}{row[2]}.')
+#             line_count += 1
+#     print(f'Processed {line_count} lines.')]
