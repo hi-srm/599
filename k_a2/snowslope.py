@@ -26,60 +26,197 @@ import csv
 
 ### create empty rows and add the values in the snow.slope file to those rows
 # f = open("snow.slope")
-# csv_reader = csv.reader(f)
+# csv_reader = csv.reader
 # for line in csv_reader:
 #     rowlist = []
 #     for value in line:
 #         rowlist.append((int(value))) # change value from string to int
 #     print(rowlist)
 # f.close()
-### this returned an error: "invalid iteral for int() with base 10" - i think this is because there are empty cells within the slope file
+### this returned an error: "invalid iteral for int() with base 10"
 
-### do the same as above, but change values to floats and then integers so it can read them maybe?
+
+
+
+### define delimiters and replace them to fix the error
 # f = open("snow.slope")
-# csv_reader = csv.reader(f)
+# csv_reader = csv.reader(f, delimiter=' ')
+# for line in csv_reader:
+#     rowlist = []
+#     line = line.replace('\n', '')
+#     for value in line:
+#         print(value)
+#         rowlist.append((int(value))) # change value from string to int
+#     print(rowlist)
+# f.close()
+### this did not work
+
+
+### make the file only read values and not spaces
+# f = open("snow.slope")
+# csv_reader = csv.reader(f, delimiter=' ')
 # for line in csv_reader:
 #     rowlist = []
 #     for value in line:
-#         rowlist.append((int(float(value)))) # change to float and then to integer
-#     print(rowlist)
+#         if not value:
+#             continue
+#         rowlist.append((int(value))) # change value from string to int
 # f.close()
-### this didn't work, it said 'could not convert string to float'
-
-### this means the data needs cleaning, for this i will use some other tools, imported below
-import pandas as pd
-import numpy as np
-
-### to read the csv and find missing values
-data = pd.read_csv('snow.slope')
-# print(data)
-
-
-df = pd.read_csv('snow.slope')
-new_df = df.dropna()
-
-print(new_df.to_string())
+### this worked!
 
 
 
-# df = pd.read_csv('snow.slope')
-# df.head()
+### create the environment and add the rows to that
+# f = open("snow.slope")
+# csv_reader = csv.reader(f, delimiter=' ')
+# environment = []
+# for line in csv_reader:
+#     rowlist = []
+#     for value in line:
+#         if not value:
+#             continue
+#         rowlist.append((int(value)))
+#     environment.append(rowlist)
+# f.close()
+###
+
+
+### create the environment and add the rows to that
+f = open("snow.slope")
+csv_reader = csv.reader(f, delimiter=' ')
+environment = []
+for line in csv_reader:
+    rowlist = []
+    for value in line:
+        if not value: 
+            continue
+        rowlist.append((int(value)))
+    environment.append(rowlist)
+f.close()
+###
+
+num_heights = 300
+heights = []
+
+nrows = len(environment)
+
+for i in range(1, nrows):
+    rowpos = len(environment[i]) # gives us number of columns in the i'th row
+
+print(rowpos)
+
+
+# for i in environment:
+#     row = 1
+#     col = 2
+#     heights.append([row][col])
+#     print(heights)
+
+
+# range(num_heights):
+#     row = 
+#     heights.append(environment[row][col])
+#     print(heights)
+
+# row = nrows-1 # test the very last row
+# col = ncols-1 # test last col
+
+# print(environment[row][col])
+
+# height = environment[i][i]
+
+
+
+# nrows = len(environment) # how many rows 
+# print("nrows", nrows) 
+# ncols = len(environment[0]) # set ncols to be number of columns in first row
+# print("ncols", ncols)
+# for i in range(1, nrows):
+#     ncolsini = len(environment[i]) # gives us number of columns in the i'th row
+#     if ncols != ncolsini:
+#         print("error line", i, ", wrong number of columns, expecting", ncols, "received", ncolsini)
+#         plot = False
+        
+        
+# for row in range(nrows):
+#     print(row[value])
+
+
+    
+    # for col in range(ncols):
+    #     height = value[row][col]
+#         value = environment[row][col]
+#         # value2 = value * value #  shortening code
+#         environment[row][col] = value       
+
+
+# print(value[1][0])
 
 
 
 
+# def distance_between(a, b):
+#     """
+    
+
+#     Parameters
+#     ----------
+#     a : TYPE
+#         DESCRIPTION.
+#     b : TYPE
+#         DESCRIPTION.
+
+#     Returns
+#     -------
+#     TYPE
+#         DESCRIPTION.
+
+#     """
+#     return (((a.x - b.x)**2) + ((a.y - b.y)**2))**0.5   
+
+# heights = 300)
+# gradients = []
+
+# for i in range(heights):
+#     gradient.append(str(i))
+
+# for h in heights:
+#     environment.append(rowlist + h)
+   
+
+# maxheight = 300
+# heights = []
+
+# ### define function
+
+# def gradient(a, b):
+#     '''
+    
+
+#     Parameters
+#     ----------
+#     a : TYPE
+#         DESCRIPTION.
+#     b : TYPE
+#         DESCRIPTION.
+
+#     Returns
+#     -------
+#     TYPE
+#         DESCRIPTION.
+
+#     '''
+#     return (((a[0] - b[0])**2) + ((a[1] - b[1])**2))**0.5
+
+
+# grad = gradient(a[0],a[b])
 
 
 
 
-
-
-
-
-
-
-
-
+# ### plot it
+# matplotlib.pyplot.imshow(environment)
+# matplotlib.pyplot.show()
 
 
 
@@ -238,6 +375,3 @@ print(new_df.to_string())
 
 # print(environment[row][col]) # i checked in the file
 
-
-
-# -------
