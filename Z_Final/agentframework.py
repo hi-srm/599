@@ -17,7 +17,7 @@ class Agent():
 
         Paramaters
         ----------
-        self.i: Number
+        self.i: Integer
             Each agent's identifier
         self.agents: List
             Agents list
@@ -26,11 +26,11 @@ class Agent():
 
         Variables
         __________
-        self.store: Number
+        self.store: Float
             Initialised to 0
-        self.x: Number
+        self.x: Float
             Random number between 0,99
-        self.y: Number
+        self.y: Float
             Random number between 0,99
         """
         self.i = i
@@ -47,13 +47,13 @@ class Agent():
         
         Variables
         ------
-        self.i: Number
+        self.i: Integer
             Agent's identifier
-        self.store: Number
+        self.store: Float
             Agent's store
-        self.x: Number
+        self.x: Float
             Agent's position on x axis
-        self.y: Number
+        self.y: Float
             Agent's position on y axis
 
         Returns
@@ -73,9 +73,9 @@ class Agent():
 
         Paramaters
         ------
-        self.x: Number
+        self.x: Float
             X coordinate of agent
-        self.y: Number   
+        self.y: Float   
             Y coordinate of agent
 
         Returns
@@ -102,9 +102,9 @@ class Agent():
         
         Paramaters
         ------
-        self.i: Number
+        self.i: Integer
             Agent's identifier
-        self.store: Number
+        self.store: Float
             Agent's store
         self.environment: List
             y and x coordinates
@@ -134,7 +134,7 @@ class Agent():
     
         Returns
         ------
-        distance_between: Number
+        distance_between: Float
             Distance between self and b
         """
         return (((self.x - b.x)**2) + 
@@ -150,7 +150,7 @@ class Agent():
 
         Parameters
         ------
-        neighbourhood: Number
+        neighbourhood: Integer
             Paramater set in model that determines the neighbourhood radius
 
         Returns
