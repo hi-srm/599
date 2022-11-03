@@ -56,27 +56,26 @@ ax.set_autoscale_on(False)
 
 def update(frame_number):
     """
-    Defines when the animation updates each frame
+    Defines the state of the model for each iteration, and plots it in an animation
 
     Paramaters
     ----------
-    frame_number: Each new frame
-        Shuffles the agents; shows how they have moved and eaten; changes the environment
+    frame_number: Object
+        Contains updated agent and environment information
 
     Returns
     ----------
-    Numbers
-        Updated values for both agents and environment after agents have moved, eaten, shared with neighbours.
+    None.
     """
     fig.clear()
 
     for j in range(num_of_iterations):
         random.shuffle(agents)  # Shuffles the agents' list
         for i in range(num_of_agents):
-            agents[i].move()  # Stops any agent moving before any other agent
-        for i in range(num_of_agents):
-            agents[i].eat() # Calls the eat function
-            agents[i].share_with_neighbours(neighbourhood) # Calls the share with neighbours function
+            agents[i].move()  # Moves the agents first
+            for i in range(num_of_agents):
+                agents[i].eat() # Calls the eat function
+                agents[i].share_with_neighbours(neighbourhood) # Calls the share with neighbours function
 
     matplotlib.pyplot.xlim(0, 99) # Plots on x axis
     matplotlib.pyplot.ylim(0, 99) # Plots on y axis
