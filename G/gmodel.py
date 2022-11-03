@@ -1,4 +1,6 @@
 """
+G Practical: Communicating
+Author: Sophie Ray Morrison
 """
 # import relevant bits
 import random

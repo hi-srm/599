@@ -1,11 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-Created on Mon Sep 12 15:46:08 2022
-
-@author: sophie ray morrison
+B Practical: Code Shrinking I
+Author: Sophie Ray Morrison
 """
-
-# import relevant bits
+# import relevant packages
 import random
 import operator
 import matplotlib.pyplot
@@ -14,12 +11,12 @@ import matplotlib.pyplot
 num_of_agents=10
 agents = []
 
-# create agents using random numbers
+# create agents using random numbers (remove need for creating x0 and y0)
 for i in range(num_of_agents):
     agents.append([random.randint(0,99),random.randint(0,99)])
     
 # print agents
-print(agents)
+print("agents positions: ", agents)
 
 # set random number
 x = random.randint(0,99)
@@ -48,6 +45,9 @@ maxx = max(agents, key=operator.itemgetter(0))
 minx = min(agents, key=operator.itemgetter(0))
 maxy = max(agents, key=operator.itemgetter(1))
 miny = min(agents, key=operator.itemgetter(1))
+
+# prints maximum in x
+print("maximum in the x direction: ", max(agents, key=operator.itemgetter(1)))
 
 # plot right most coordinate red
 matplotlib.pyplot.scatter(maxy[1], maxy[0])
@@ -90,13 +90,13 @@ for i in range(num_of_agents):
             maxd = d
 
 # print max distance 
-print(maxd)
+print("max distance: ", maxd)
 
-
+# distance test to check it works
 a = [0,0]
 b = [3,4]
 d = distance_between(a,b)
-print(d)
+print("distance: ", d)
 
 # set y0 and x0
 y0 = random.randint(0,99)
@@ -104,4 +104,4 @@ x0 = random.randint(0,99)
 
 agents.append([y0,x0])
 
-print(agents)
+print("agents' positions after move: ", agents)

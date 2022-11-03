@@ -1,5 +1,7 @@
 """
-H Practical: Animation/behaviour. Agent Framework.
+Final project
+
+Agent Framework for Model
 Author: Sophie Ray Morrison
 Version: Final
 """
@@ -15,19 +17,21 @@ class Agent():
 
         Paramaters
         ----------
-        self.i: each agent's identifier
-        self.agents: agents list
-        self.environment: environment list
+        self.i: Number
+            Each agent's identifier
+        self.agents: List
+            Agents list
+        self.environment: List
+            Environment list
 
         Variables
         __________
-        self.store: initialised to 0
-        self.x: random number between 0,99
-        self.y: random number between 0,99
-
-        Returns
-        ------
-        nothing as 'initialise' just initialises
+        self.store: Number
+            Initialised to 0
+        self.x: Number
+            Random number between 0,99
+        self.y: Number
+            Random number between 0,99
         """
         self.i = i
         self.agents = agents
@@ -38,8 +42,20 @@ class Agent():
 
     def __str__(self):
         """
-        Makes the output of figures more readable by adding descriptions
+        Generates a string with details of agents
+        This can be used to make the output of results more readable by adding text descriptions
         
+        Variables
+        ------
+        self.i: Number
+            Agent's identifier
+        self.store: Number
+            Agent's store
+        self.x: Number
+            Agent's position on x axis
+        self.y: Number
+            Agent's position on y axis
+
         Returns
         ------
         A string with the identifier, store and position [x,y] of agents
@@ -50,22 +66,21 @@ class Agent():
         
     def move(self):
         """
-        Moves agents by generating a random number between 0 and 1
-        If smaller than 0.5, x coordinate of agent is increased by 1%
-        If larger than 0.5, x coordinate of agent is descreased by 1%
-        (Half of the time the x coordinate is increased and half it is being decreased)
-        Always change by 1% but it's 50/50 whether it is increasing or decreasing on each coordinate
+        Moves agents by generating a random number between 0.0 and 0.9
+        If smaller than 0.5, x coordinate of agent is increased by 1
+        If larger than 0.5, x coordinate of agent is descreased by 1
+        The same applies to the y coordinate
 
         Paramaters
         ------
-        self.x: x coordinate of agent
-        self.y: y coordinate of agent
+        self.x: Number
+            X coordinate of agent
+        self.y: Number   
+            Y coordinate of agent
 
         Returns
         ------
-        move: coordinates
-        New coordinates after moving
-
+        Modifies x and y variables of the agent
         """
         if random.random() < 0.5:
             self.x = (self.x + 1) % 100
@@ -77,13 +92,26 @@ class Agent():
         else:
             self.y = (self.y - 1) % 100
 
-    def eat(self): # Making the agent eat the environment
+    def eat(self):
         """
-        Makes agents eat the environment
+        Makes agents store resources from the environment
         
-        If environment at the position the agent is in is larger than 10, the agent stores those 10 points from the environment and takes them away from the environment
-        Otherwise, (so environment value at that position < 10) the agent only takes what is there and then the environment goes down to 0 (i.e. takes whatever is left)
-        If each agent has eaten more than 100 from the environment, the environment takes those points back (so the agents can only store 100 points before returning them to the environment)
+        If the environment at the position the agent is in is larger than 10, the agent stores those 10 points, taking them from the environment
+        Otherwise, (so environment value at that position < 10) the agent only takes what is there and then the environment goes down to 0 (i.e. takes whatever is left). This is to avoid having negative values for the environment.
+        If an agent has eaten more than 100 from the environment, the environment takes those points back (so the agents can only store 100 points before returning them to the environment)
+        
+        Paramaters
+        ------
+        self.i: Number
+            Agent's identifier
+        self.store: Number
+            Agent's store
+        self.environment: List
+            y and x coordinates
+
+        Returns
+        -----
+        Changes the values of environment and store variables
         """
         if self.environment[self.y][self.x] > 10:
             self.environment[self.y][self.x] -= 10
@@ -97,19 +125,17 @@ class Agent():
 
     def distance_between(self, b):
         """
-        This calculates the distance between self and b
+        Calculates the distance between self and b (another agent)
     
         Paramaters
         ----------
-        self : List containing y,x coordinates
-        One of the coordinates
-        b : List containing y,x coordinates
-        One of the coordinates        
+        b: Object 
+            Agent that contains identifier, store, environment, x coordinate, y coordinate, agent list
     
         Returns
         ------
-        distance_between : Number
-        distance between a and b
+        distance_between: Number
+            distance between self and b
         """
         return (((self.x - b.x)**2) + 
         ((self.y - b.y)**2))**0.5
@@ -121,17 +147,15 @@ class Agent():
         - Each agent calculates the average stored value between itself and its neighbour
         - That average becomes the agent's store value (ie if you're near other agents you have less environment to eat)
         - And also the store of the neighbours' sets it to that average
-        - So for all agents within a neighbourhood, the store is redistributed so each agent has the average
 
         Parameters
         ------
-        self: Agent
-        neighbourhood: Integer
+        neighbourhood: Number
+            Paramater set in model that determines the neighbourhood radius
 
         Returns
         ------
-        share_with_neighbours: Integer
-        Gives agents the new store value        
+        Modifies agents' store     
         """
         for i in range(len(self.agents)): # get length of agents list and loop through agents
             distance = self.distance_between(self.agents[i])# calculate distance between self and every other agent
@@ -140,4 +164,3 @@ class Agent():
                 average = (self.store + self.agents[i].store) /2
                 self.store = average
                 self.agents[i].store = average
-                # print("sharing " + str(distance) + " " + str(average)) # to see what is being shared - this returns some sharing but also regularly returns 'sharing 0.0 10.0' why is that? - ok i realised it's because i didn't have enough agents!

@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
 """
-Created on Tue Sep 13 10:23:34 2022
-
-@author: sophie ray morrison
+D Practical: Building tools
+Author: Sophie Ray Morrison
 """
 
 # import relevant bits

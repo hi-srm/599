@@ -1,4 +1,6 @@
 """
+F Practical: I/O
+Author: Sophie Ray Morrison
 """
 # import relevant bits
 import random

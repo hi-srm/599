@@ -1,7 +1,9 @@
 """
-practical: animation/behaviour
+H Practical: Animation/behaviour
+Author: Sophie Ray Morrison
+Version: Final
 """
-# import relevant bits
+## Import relevant packages
 import random
 import operator
 import matplotlib
@@ -11,7 +13,7 @@ import agentframework
 import csv
 matplotlib.use('macosx')
 
-# read the in.txt file
+## Read the in.txt file
 f = open("in.txt") # open file
 csv_reader = csv.reader(f) # read as csv
 environment = [] # make empty environment list
@@ -24,35 +26,22 @@ for line in csv_reader: # scan through each line
     environment.append(rowlist) # making a list for the environment with each value
 f.close()
 
-# reading in the data - removed as this is not useful  anymore - this was earlie test
-# with open('in.txt') as csv_file: # open as csv
-#     csv_reader = csv.reader(csv_file, delimiter=',') # telling it delimiter is a comma
-#     line_count = 0 # set variable line count to 0
-#     for row in csv_reader: # go through each row
-#         if line_count == 0: # counting how many lines are in the file
-#             # print(f'Column names are {", ".join(row)}')
-#             line_count += 1 # each row adding 1 to line count number
-#         else:
-#             # print(f'\t{row[0]}{row[1]}{row[2]}.')
-#             line_count += 1 # each row adding 1 to line count number
-#     # print(f'Processed {line_count} lines.')
-
-# initialising the agents and creating empty agent list
+## Initialise the agents and creating empty agent list
 num_of_agents = 10 # set number of agents
 num_of_iterations = 100 # set iterations
 neighbourhood = 20 # create neighborhood
 agents = [] # make empty agents list
 
-# populating the agents list with agents
+## Populate the agents list with agents
 for i in range(num_of_agents): # loop through 'num_of_agents' from 0 to 9
     agents.append(agentframework.Agent(i, environment, agents)) # populatng agent list with agents intiailised through agentframework
     # print(agents[i]) 
 
-## to check the agents have access to other agents lists
+## To check the agents have access to other agents lists
 # print("testing - item from agents' list: ")
 # print(agents[0].agents[1])
  
-## going through each agent for each iteration and having them move and eat
+## Going through each agent for each iteration and having them move and eat
 # for j in range(num_of_iterations):
 #     for i in range(num_of_agents):
 #         agents[i].move()
@@ -60,7 +49,7 @@ for i in range(num_of_agents): # loop through 'num_of_agents' from 0 to 9
 #         agents[i].share_with_neighbours(neighbourhood)
 #         # print(agents[i])
 
-# have commented out above and now replacing with code below so i can create more loops
+# I have commented out above and now replacing with code below so I can create more loops
 for j in range(num_of_iterations):
     random.shuffle(agents)# shuffle the list
     for i in range(num_of_agents):
@@ -70,11 +59,11 @@ for j in range(num_of_iterations):
     # for i in range(num_of_agents): # removing as not needed
         agents[i].share_with_neighbours(neighbourhood)
 
-print("after moving")
+# Print agents' positions after moving
 for i in range(num_of_agents):
-    print(agents[i])
+    print("after moving ", agents[i])
 
-# # plotting the agents' positions and the data
+## Plotting the agents' positions and the data
 # matplotlib.pyplot.xlim(0, 99)
 # matplotlib.pyplot.ylim(0, 99)
 # matplotlib.pyplot.imshow(environment)
@@ -83,23 +72,24 @@ for i in range(num_of_agents):
 # matplotlib.pyplot.show()
 # removed the code above from the model as now just working with the animation
 
-## animation
-
-# set up figure for animation and define axes
+## Animation
+# Set up figure for animation and define axes
 fig = matplotlib.pyplot.figure(figsize=(7, 7))
 ax = fig.add_axes([0, 0, 1, 1])
 
-# turn autoscale off
+# Turn autoscale off
 ax.set_autoscale_on(False)
 
 def update(frame_number):
     """
-    defines when the animation updates each frame
+    Defines when the animation updates each frame
 
-    paramaters
+    Paramaters
+    ----------
     frame_number: each new frame
 
-    returns
+    Returns
+    ----------
     x and y coordinates to plot the moving agents frame by frame
     """
     fig.clear()
@@ -119,7 +109,14 @@ def update(frame_number):
     for i in range(num_of_agents):
         matplotlib.pyplot.scatter(agents[i].x,agents[i].y)
 
-
+# Initialise the animation
 animation = matplotlib.animation.FuncAnimation(fig, update, interval=1)
 
+# Show the animation
 matplotlib.pyplot.show()
+
+# Print the eaten environment to a new text file
+f2 = open('out.txt', 'w')
+for item in environment:
+    f2.write(str(item))
+f2.close()

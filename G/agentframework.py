@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
 """
-Created on Tue Sep 13 14:29:17 2022
-
-@author: gysmo
+G Practical: Communicating - Agentframework
+Author: Sophie Ray Morrison
 """
 import random
 

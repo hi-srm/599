@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-Created on Mon Sep 12 10:55:41 2022
-
-@author: sophie ray morrison
+C Practical: Code Shrinking II
+Author: Sophie Ray Morrison
 """
-# import relevant bits
+# import relevant packages
 import random
 
 # # set random seed
@@ -15,6 +13,13 @@ r = random.random()
 print(r) # print to test
 r2 = random.randint(0,5)
 print(r2) # print to text
+
+num_of_agents=10
+agents = []
+
+# create agents
+for i in range(num_of_agents):
+    agents.append([random.randint(0,100),random.randint(0,100)])
 
 # set variables for y and x positions
 y0 = 50
@@ -54,9 +59,13 @@ else:
 print("y1",y1)
 print("x1",x1)
 
-#x0 = y0 = 0   #to test the distance calculation
-#x1 = -3
-#y1 = -4
+# to test the distance calculation is working
+# x0 = y0 = 0   
+# x1 = -3
+# y1 = -4
+
+# working out the distance by taking the positions, squaring them
+# then finding the square root of the total
 y_diff = (y0 - y1)
 y_diffsq = y_diff * y_diff
 x_diff = (x0 - x1)

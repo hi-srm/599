@@ -1,5 +1,6 @@
 """
-fill in 
+E Practical: Agents
+Author: Sophie Ray Morrison
 """
 
 import random
@@ -20,8 +21,8 @@ def distance_between(agent_a, agent_b):
     
     Returns
     ------
-        distance : Number
-        distance between agent_a and agent_b
+    distance : Number
+    distance between agent_a and agent_b
     """
     return (((agent_a.x - agent_b.x)**2) + 
     ((agent_a.y - agent_b.y)**2))**0.5
@@ -53,13 +54,12 @@ for i in range(num_of_agents):
     matplotlib.pyplot.scatter(agents[i].x,agents[i].y)
 matplotlib.pyplot.show()
 
-# # distance calculation - not needed??
+## distance calculation - not needed?
 # for agents_row_a in agents:
 #     for agents_row_b in agents:
 #         distance = distance_between(agents_row_a, agents_row_b)
 
-
-# test to check distance is being calculated correctly
+# Test to check distance is being calculated correctly
 # for this, i changed agents to 2 and iterations to 1
 # for agent1 in agents:
 #     for agent2 in agents:
@@ -76,6 +76,7 @@ matplotlib.pyplot.show()
 # third pair calculates distance between 2nd and 1st
 # last pair calculates distance between agent 2 and agent 2
 
+# Print distance between agents
 for agent1 in agents:
     for agent2 in agents:
         distance = distance_between(agent1, agent2)
