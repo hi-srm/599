@@ -65,7 +65,8 @@ def update(frame_number):
 
     Returns
     ----------
-    x and y coordinates to plot the moving agents frame by frame
+    Numbers
+        Updated values for both agents and environment after agents have moved, eaten, shared with neighbours.
     """
     fig.clear()
 
