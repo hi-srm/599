@@ -135,7 +135,7 @@ class Agent():
         Returns
         ------
         distance_between: Number
-            distance between self and b
+            Distance between self and b
         """
         return (((self.x - b.x)**2) + 
         ((self.y - b.y)**2))**0.5
