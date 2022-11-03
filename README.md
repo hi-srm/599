@@ -15,7 +15,7 @@ Contains workthroughs of the practical exercises, as well as a final agent-based
 - F: I/O
 - G: Communicating
 - H: Animation/behaviour
-- Z: Final model
+- Z_Final: Final model
 
 ## Final model
 
